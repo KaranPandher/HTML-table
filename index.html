@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title> Table Exercise (DOM Manipulation)</title>
+    </head>
+
+    <body> 
+        <h1>Table Exercise (DOM Manipulation) </h1>
+        <form id ="my-form" action ="#" method ="GET"> 
+        <label for = "name">Name: </label>
+        <input id = "name" name="name" type="text">
+        <!-- the name in label "for" must match the id in input -->
+        <!-- Label makes the text beside the boxes 
+              Input makes the boxes -->
+
+        <label for ="age">Age:</label>
+        <input id ="age" name = "age" type = "text">
+
+        <label for = "class">Class:</label>
+        <input id = "class" name = "class" type ="text">
+
+        <label for = "city">City:</label>
+        <input id = "city" name = "city" type = "text">
+
+        <input type = "submit" value = "add to table">
+        <!-- Submit button; add to table is the text on the button -->
+        <!-- All this need to be part of one form for it to gather the information concurrently-->
+
+        </form>
+
+        <table id = "my-table"> 
+            <thead>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Class</th>
+                <th>City</th>
+           </thead>
+           <tbody id = "my-table-body"></tbody>
+    </table>
+    <!-- Scripts; should be in header for good practice; and done seperately -->
+    <script type = "text/javascript" defer>
+        // Inside here is Javascript File
+        // Declare variables at the top of each scope
+        var form = document.getElementById( 'my-form');
+        var table =  document.getElementById( 'my-table');
+        var tableBody = document.getElementById('my-table-body');
+        // getElementById grabs it from the document/html/css 
+
+        window.addEventListener( 'load', function(event){
+           // console.log('Hello')
+        // addEventListener; 
+        });
+        form.addEventListener('submit', function( event) {
+            event.preventDefault();
+
+            var name = form.name.value;
+            var age = document.getElementById('age').value;
+            var schoolclass = form.class.value;
+            var city = form.city.value; 
+
+           // console.log(name + ' ' + age + ' ' + city);
+           // Test your code with console.log by inspecting the source code and seeing the output of your vars to see if it works. 
+           // keep the console.logs if you need to debug you can just remove the comments and find where the error is. 
+
+           var newRow = document.createElement('tr');
+           var newColName = document.createElement('td');
+           newColName.innerHTML = name;
+           //console.log (newColName);
+           newRow.appendChild(newColName);
+
+           // More WOrk 
+           
+           tableBody.appendChild(newRow);
+
+           // Clear form 
+
+           document.getElementBy( 'name').value = ' ';
+        });
+
+    </script>
+    </body>
+</html>
